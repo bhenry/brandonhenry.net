@@ -29,7 +29,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 	<!-- end bootstrap stuff -->
-	<script src="/assets/js/main-debug.js"></script>
+
 	<link rel="stylesheet" href="/assets/css/styles.css" />
 	
 	<title>brandonhenry.net</title>
@@ -62,5 +62,11 @@
 		<a href="http://brandonhenry.net/">brandonhenry.net</a>
 	</div>
 </div>
+	
+	<script src="/assets/js/main.js"></script>
+	<script type="text/javascript">
+		main.core.main();
+	</script>
+	
 </body>
 </html>
