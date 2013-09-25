@@ -65,7 +65,7 @@
 	
 	<script src="/assets/js/main.js"></script>
 	<script type="text/javascript">
-		main.core.main();
+		client.core.run();
 	</script>
 	
 </body>
