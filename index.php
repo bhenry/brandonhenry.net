@@ -55,10 +55,16 @@
 		</h3>
 	</div>
 	<div id="content" class="col-xs-12">
-		<div id="soon">more<br/>coming<br/>soon</div>
+	
 	</div>
+        <div id="gist">
+             <a title="https://gist.github.com/bhenry/9b78912329ac049ace3d" 
+                href="https://gist.github.com/bhenry/9b78912329ac049ace3d">
+             View ClojureScript Source
+             </a>
+        </div>
 	<div id="footer" class="col-xs-12">
-		&copy; <?php echo date("Y"); ?> 
+        &copy; <?php echo date("Y"); ?> 
 		<a href="http://brandonhenry.net/">brandonhenry.net</a>
 	</div>
 </div>
