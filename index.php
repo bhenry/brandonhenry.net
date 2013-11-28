@@ -22,16 +22,14 @@
 	//]]></script>
 	
 	<!-- bootstrap stuff -->
-
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">	
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">	
 	<!-- end bootstrap stuff -->
 
 	<link rel="stylesheet" href="/assets/css/styles.css" />
-	
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width">
 	<title>brandonhenry.net</title>
 </head>
 <body>
