@@ -50,14 +50,19 @@
 			<a href="tel://1-207-754-4303" title="207.754.4303">
 				<span class="fa fa-phone"></span>
 			</a>
+                        <a href="https://github.com/bhenry" title="github.com/bhenry"
+                           target="_blank">
+				<span class="fa fa-github"></span>
+			</a>
 		</h3>
 	</div>
 	<div id="content" class="col-xs-12">
 	
 	</div>
         <div id="gist">
-             <a title="https://gist.github.com/bhenry/9b78912329ac049ace3d" 
-                href="https://gist.github.com/bhenry/9b78912329ac049ace3d">
+             <a target="_blank"
+                title="https://github.com/bhenry/bhenry-js/blob/develop/src/cljs/client/core.cljs"
+                href="https://github.com/bhenry/bhenry-js/blob/develop/src/cljs/client/core.cljs">
              View ClojureScript Source
              </a>
         </div>
