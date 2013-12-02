@@ -22,14 +22,16 @@
 	//]]></script>
 	
 	<!-- bootstrap stuff -->
-	<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-	<script src="/assets/js/jquery-1.10.1.min.js"></script>
-	<script src="/assets/js/bootstrap.min.js"></script>
-    <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet">	
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">	
 	<!-- end bootstrap stuff -->
 
 	<link rel="stylesheet" href="/assets/css/styles.css" />
-	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width">
+	
 	<title>brandonhenry.net</title>
 </head>
 <body>
@@ -55,12 +57,7 @@
 	<div id="content" class="col-xs-12">
 	
 	</div>
-        <div id="gist">
-             <a title="https://gist.github.com/bhenry/9b78912329ac049ace3d" 
-                href="https://gist.github.com/bhenry/9b78912329ac049ace3d">
-             View ClojureScript Source
-             </a>
-        </div>
+	
 	<div id="footer" class="col-xs-12">
         &copy; <?php echo date("Y"); ?> 
 		<a href="http://brandonhenry.net/">brandonhenry.net</a>

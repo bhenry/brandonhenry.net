@@ -25141,27 +25141,28 @@ goog.require("jayq.core");
 goog.require("cljs.reader");
 goog.require("jayq.core");
 goog.require("dommy.core");
-client.core.game_starting_position = cljs.core.PersistentVector.fromArray([5, 5], true);
-client.core.game_bug_count = 30;
-client.core.game_board_width = 11;
-client.core.game_board_height = 11;
+client.core.game_starting_position = cljs.core.PersistentVector.fromArray([0, 0], true);
+client.core.game_bug_count = 16;
+client.core.game_board_width = 9;
+client.core.game_board_height = 9;
+client.core.character = cljs.core.atom.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'healthy", "\ufdd0'sick"], {"\ufdd0'healthy":"fa-male", "\ufdd0'sick":"fa-wheelchair"}));
 client.core.layout = function layout(content) {
-  var dom10529 = document.createElement("div");
-  dom10529.setAttribute("id", "inner-content");
-  dom10529.appendChild(dommy.template.__GT_node_like.call(null, content));
-  return dom10529
+  var dom30293 = document.createElement("div");
+  dom30293.setAttribute("id", "inner-content");
+  dom30293.appendChild(dommy.template.__GT_node_like.call(null, content));
+  return dom30293
 };
 client.core.bug_states = cljs.core.PersistentVector.fromArray(["\ufdd0'healthy", "\ufdd0'sick", "\ufdd0'dead"], true);
 client.core.bug_direction = function bug_direction(dir) {
-  var pred__10533 = cljs.core._EQ_;
-  var expr__10534 = dir;
-  if(pred__10533.call(null, "\ufdd0'east", expr__10534)) {
+  var pred__30297 = cljs.core._EQ_;
+  var expr__30298 = dir;
+  if(pred__30297.call(null, "\ufdd0'east", expr__30298)) {
     return"\ufdd0'fa-rotate-90"
   }else {
-    if(pred__10533.call(null, "\ufdd0'south", expr__10534)) {
+    if(pred__30297.call(null, "\ufdd0'south", expr__30298)) {
       return"\ufdd0'fa-rotate-180"
     }else {
-      if(pred__10533.call(null, "\ufdd0'west", expr__10534)) {
+      if(pred__30297.call(null, "\ufdd0'west", expr__30298)) {
         return"\ufdd0'fa-rotate-270"
       }else {
         return"\ufdd0'normal"
@@ -25170,21 +25171,21 @@ client.core.bug_direction = function bug_direction(dir) {
   }
 };
 client.core.bug = function() {
-  var bug__delegate = function(p__10536) {
-    var vec__10541 = p__10536;
-    var state = cljs.core.nth.call(null, vec__10541, 0, null);
-    var dir = cljs.core.nth.call(null, vec__10541, 1, null);
+  var bug__delegate = function(p__30300) {
+    var vec__30305 = p__30300;
+    var state = cljs.core.nth.call(null, vec__30305, 0, null);
+    var dir = cljs.core.nth.call(null, vec__30305, 1, null);
     return dommy.template.__GT_node_like.call(null, function() {
       var color = function() {
-        var pred__10542 = cljs.core._EQ_;
-        var expr__10543 = state;
-        if(pred__10542.call(null, "\ufdd0'healthy", expr__10543)) {
+        var pred__30306 = cljs.core._EQ_;
+        var expr__30307 = state;
+        if(pred__30306.call(null, "\ufdd0'healthy", expr__30307)) {
           return"\ufdd0'green"
         }else {
-          if(pred__10542.call(null, "\ufdd0'sick", expr__10543)) {
+          if(pred__30306.call(null, "\ufdd0'sick", expr__30307)) {
             return"\ufdd0'red"
           }else {
-            if(pred__10542.call(null, "\ufdd0'dead", expr__10543)) {
+            if(pred__30306.call(null, "\ufdd0'dead", expr__30307)) {
               return"\ufdd0'black"
             }else {
               return"\ufdd0'green"
@@ -25204,26 +25205,27 @@ client.core.bug = function() {
     }())
   };
   var bug = function(var_args) {
-    var p__10536 = null;
+    var p__30300 = null;
     if(goog.isDef(var_args)) {
-      p__10536 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0)
+      p__30300 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0)
     }
-    return bug__delegate.call(this, p__10536)
+    return bug__delegate.call(this, p__30300)
   };
   bug.cljs$lang$maxFixedArity = 0;
-  bug.cljs$lang$applyTo = function(arglist__10545) {
-    var p__10536 = cljs.core.seq(arglist__10545);
-    return bug__delegate(p__10536)
+  bug.cljs$lang$applyTo = function(arglist__30309) {
+    var p__30300 = cljs.core.seq(arglist__30309);
+    return bug__delegate(p__30300)
   };
   bug.cljs$lang$arity$variadic = bug__delegate;
   return bug
 }();
 client.core.man = function() {
-  var man__delegate = function(p__10546) {
-    var vec__10549 = p__10546;
-    var color = cljs.core.nth.call(null, vec__10549, 0, null);
-    var dom10550 = document.createElement("i");
-    dom10550.className = "fa fa-male";
+  var man__delegate = function(p__30310) {
+    var vec__30313 = p__30310;
+    var state = cljs.core.nth.call(null, vec__30313, 0, null);
+    var color = cljs.core.nth.call(null, vec__30313, 1, null);
+    var dom30314 = document.createElement("i");
+    dom30314.className = "fa character";
     if(cljs.core.truth_(cljs.core.ObjMap.fromObject(["\ufdd0'color"], {"\ufdd0'color":function() {
       var or__3943__auto__ = color;
       if(cljs.core.truth_(or__3943__auto__)) {
@@ -25232,7 +25234,7 @@ client.core.man = function() {
         return"\ufdd0'black"
       }
     }()}))) {
-      dom10550.setAttribute("style", dommy.core.style_str.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'color"], {"\ufdd0'color":function() {
+      dom30314.setAttribute("style", dommy.core.style_str.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'color"], {"\ufdd0'color":function() {
         var or__3943__auto__ = color;
         if(cljs.core.truth_(or__3943__auto__)) {
           return or__3943__auto__
@@ -25242,62 +25244,67 @@ client.core.man = function() {
       }()})))
     }else {
     }
-    return dom10550
+    if(cljs.core.truth_(cljs.core._lookup.call(null, cljs.core.deref.call(null, client.core.character), state, (new cljs.core.Keyword("\ufdd0'healthy")).call(null, cljs.core.deref.call(null, client.core.character))))) {
+      dom30314.className = [cljs.core.str(dom30314.className), cljs.core.str(" "), cljs.core.str(cljs.core._lookup.call(null, cljs.core.deref.call(null, client.core.character), state, (new cljs.core.Keyword("\ufdd0'healthy")).call(null, cljs.core.deref.call(null, client.core.character))))].join("").trim()
+    }else {
+    }
+    return dom30314
   };
   var man = function(var_args) {
-    var p__10546 = null;
+    var p__30310 = null;
     if(goog.isDef(var_args)) {
-      p__10546 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0)
+      p__30310 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0)
     }
-    return man__delegate.call(this, p__10546)
+    return man__delegate.call(this, p__30310)
   };
   man.cljs$lang$maxFixedArity = 0;
-  man.cljs$lang$applyTo = function(arglist__10551) {
-    var p__10546 = cljs.core.seq(arglist__10551);
-    return man__delegate(p__10546)
+  man.cljs$lang$applyTo = function(arglist__30315) {
+    var p__30310 = cljs.core.seq(arglist__30315);
+    return man__delegate(p__30310)
   };
   man.cljs$lang$arity$variadic = man__delegate;
   return man
 }();
 client.core.blank = function blank() {
-  var dom10553 = document.createElement("div");
-  dom10553.className = "square";
-  return dom10553
+  var dom30317 = document.createElement("div");
+  dom30317.className = "square";
+  return dom30317
 };
 client.core.gameboard = function gameboard(h, w) {
-  var dom10562 = document.createElement("div");
-  dom10562.setAttribute("id", "gameboard");
-  dom10562.appendChild(function() {
-    var dom10563 = document.createElement("table");
+  var dom30326 = document.createElement("div");
+  dom30326.className = "noselect";
+  dom30326.setAttribute("id", "gameboard");
+  dom30326.appendChild(function() {
+    var dom30327 = document.createElement("table");
     if("1px") {
-      dom10563.setAttribute("border", "1px")
+      dom30327.setAttribute("border", "1px")
     }else {
     }
     if(true) {
-      dom10563.setAttribute("border-collapse", true)
+      dom30327.setAttribute("border-collapse", true)
     }else {
     }
-    dom10563.appendChild(dommy.template.__GT_node_like.call(null, function() {
-      var iter__2609__auto__ = function iter__10564(s__10565) {
+    dom30327.appendChild(dommy.template.__GT_node_like.call(null, function() {
+      var iter__2609__auto__ = function iter__30328(s__30329) {
         return new cljs.core.LazySeq(null, false, function() {
-          var s__10565__$1 = s__10565;
+          var s__30329__$1 = s__30329;
           while(true) {
-            var temp__4092__auto__ = cljs.core.seq.call(null, s__10565__$1);
+            var temp__4092__auto__ = cljs.core.seq.call(null, s__30329__$1);
             if(temp__4092__auto__) {
               var xs__4579__auto__ = temp__4092__auto__;
               var i = cljs.core.first.call(null, xs__4579__auto__);
               return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'tr", cljs.core.ObjMap.fromObject(["\ufdd0'class"], {"\ufdd0'class":[cljs.core.str(i)].join("")}), function() {
                 var iter__2609__auto__ = function(i, xs__4579__auto__, temp__4092__auto__) {
-                  return function iter__10568(s__10569) {
+                  return function iter__30332(s__30333) {
                     return new cljs.core.LazySeq(null, false, function(i, xs__4579__auto__, temp__4092__auto__) {
                       return function() {
-                        var s__10569__$1 = s__10569;
+                        var s__30333__$1 = s__30333;
                         while(true) {
-                          var temp__4092__auto____$1 = cljs.core.seq.call(null, s__10569__$1);
+                          var temp__4092__auto____$1 = cljs.core.seq.call(null, s__30333__$1);
                           if(temp__4092__auto____$1) {
                             var xs__4579__auto____$1 = temp__4092__auto____$1;
                             var j = cljs.core.first.call(null, xs__4579__auto____$1);
-                            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'td", cljs.core.ObjMap.fromObject(["\ufdd0'class", "\ufdd0'data-coords"], {"\ufdd0'class":[cljs.core.str(j)].join(""), "\ufdd0'data-coords":cljs.core.format.call(null, "[%s,%s]", j, i)}), client.core.blank.call(null)], true), iter__10568.call(null, cljs.core.rest.call(null, s__10569__$1)))
+                            return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'td", cljs.core.ObjMap.fromObject(["\ufdd0'class", "\ufdd0'data-coords"], {"\ufdd0'class":[cljs.core.str(j)].join(""), "\ufdd0'data-coords":cljs.core.format.call(null, "[%s,%s]", j, i)}), client.core.blank.call(null)], true), iter__30332.call(null, cljs.core.rest.call(null, s__30333__$1)))
                           }else {
                             return null
                           }
@@ -25308,7 +25315,7 @@ client.core.gameboard = function gameboard(h, w) {
                   }
                 }(i, xs__4579__auto__, temp__4092__auto__);
                 return iter__2609__auto__.call(null, cljs.core.range.call(null, w))
-              }()], true), iter__10564.call(null, cljs.core.rest.call(null, s__10565__$1)))
+              }()], true), iter__30328.call(null, cljs.core.rest.call(null, s__30329__$1)))
             }else {
               return null
             }
@@ -25318,48 +25325,66 @@ client.core.gameboard = function gameboard(h, w) {
       };
       return iter__2609__auto__.call(null, cljs.core.range.call(null, h))
     }()));
-    return dom10563
+    return dom30327
   }());
-  return dom10562
+  return dom30326
 };
-client.core.random_coords = function random_coords() {
-  return cljs.core.PersistentVector.fromArray([cljs.core.rand_nth.call(null, cljs.core.range.call(null, client.core.game_board_width)), cljs.core.rand_nth.call(null, cljs.core.range.call(null, client.core.game_board_height))], true)
-};
+client.core.random_coords = function() {
+  var random_coords = null;
+  var random_coords__0 = function() {
+    return random_coords.call(null, 0, client.core.game_board_width, 0, client.core.game_board_height)
+  };
+  var random_coords__4 = function(x1, x2, y1, y2) {
+    return cljs.core.PersistentVector.fromArray([cljs.core.rand_nth.call(null, cljs.core.range.call(null, x1, x2)), cljs.core.rand_nth.call(null, cljs.core.range.call(null, y1, y2))], true)
+  };
+  random_coords = function(x1, x2, y1, y2) {
+    switch(arguments.length) {
+      case 0:
+        return random_coords__0.call(this);
+      case 4:
+        return random_coords__4.call(this, x1, x2, y1, y2)
+    }
+    throw new Error("Invalid arity: " + arguments.length);
+  };
+  random_coords.cljs$lang$arity$0 = random_coords__0;
+  random_coords.cljs$lang$arity$4 = random_coords__4;
+  return random_coords
+}();
 client.core.board_coords = function board_coords() {
-  var iter__2609__auto__ = function iter__10574(s__10575) {
+  var iter__2609__auto__ = function iter__30338(s__30339) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__10575__$1 = s__10575;
+      var s__30339__$1 = s__30339;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__10575__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__30339__$1);
         if(temp__4092__auto__) {
           var xs__4579__auto__ = temp__4092__auto__;
           var x = cljs.core.first.call(null, xs__4579__auto__);
-          var iterys__2607__auto__ = function(s__10575__$1, x, xs__4579__auto__, temp__4092__auto__) {
-            return function iter__10576(s__10577) {
-              return new cljs.core.LazySeq(null, false, function(s__10575__$1, x, xs__4579__auto__, temp__4092__auto__) {
+          var iterys__2607__auto__ = function(s__30339__$1, x, xs__4579__auto__, temp__4092__auto__) {
+            return function iter__30340(s__30341) {
+              return new cljs.core.LazySeq(null, false, function(s__30339__$1, x, xs__4579__auto__, temp__4092__auto__) {
                 return function() {
-                  var s__10577__$1 = s__10577;
+                  var s__30341__$1 = s__30341;
                   while(true) {
-                    var temp__4092__auto____$1 = cljs.core.seq.call(null, s__10577__$1);
+                    var temp__4092__auto____$1 = cljs.core.seq.call(null, s__30341__$1);
                     if(temp__4092__auto____$1) {
                       var xs__4579__auto____$1 = temp__4092__auto____$1;
                       var y = cljs.core.first.call(null, xs__4579__auto____$1);
-                      return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__10576.call(null, cljs.core.rest.call(null, s__10577__$1)))
+                      return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([x, y], true), iter__30340.call(null, cljs.core.rest.call(null, s__30341__$1)))
                     }else {
                       return null
                     }
                     break
                   }
                 }
-              }(s__10575__$1, x, xs__4579__auto__, temp__4092__auto__), null)
+              }(s__30339__$1, x, xs__4579__auto__, temp__4092__auto__), null)
             }
-          }(s__10575__$1, x, xs__4579__auto__, temp__4092__auto__);
+          }(s__30339__$1, x, xs__4579__auto__, temp__4092__auto__);
           var fs__2608__auto__ = cljs.core.seq.call(null, iterys__2607__auto__.call(null, cljs.core.range.call(null, client.core.game_board_height)));
           if(fs__2608__auto__) {
-            return cljs.core.concat.call(null, fs__2608__auto__, iter__10574.call(null, cljs.core.rest.call(null, s__10575__$1)))
+            return cljs.core.concat.call(null, fs__2608__auto__, iter__30338.call(null, cljs.core.rest.call(null, s__30339__$1)))
           }else {
-            var G__10578 = cljs.core.rest.call(null, s__10575__$1);
-            s__10575__$1 = G__10578;
+            var G__30342 = cljs.core.rest.call(null, s__30339__$1);
+            s__30339__$1 = G__30342;
             continue
           }
         }else {
@@ -25371,32 +25396,32 @@ client.core.board_coords = function board_coords() {
   };
   return iter__2609__auto__.call(null, cljs.core.range.call(null, client.core.game_board_width))
 };
-client.core.grab = function grab(p__10579) {
-  var vec__10581 = p__10579;
-  var x = cljs.core.nth.call(null, vec__10581, 0, null);
-  var y = cljs.core.nth.call(null, vec__10581, 1, null);
+client.core.grab = function grab(p__30343) {
+  var vec__30345 = p__30343;
+  var x = cljs.core.nth.call(null, vec__30345, 0, null);
+  var y = cljs.core.nth.call(null, vec__30345, 1, null);
   return jayq.core.$.call(null, cljs.core.format.call(null, "[data-coords='[%s,%s]']", x, y))
 };
 client.core.put = function put(xy, val) {
   return jayq.core.html.call(null, client.core.grab.call(null, xy), val)
 };
 client.core.find_man = function find_man() {
-  return jayq.core.closest.call(null, jayq.core.$.call(null, ".fa-male"), "td")
+  return jayq.core.closest.call(null, jayq.core.$.call(null, ".character"), "td")
 };
 client.core.coords = function coords($cell) {
   return cljs.core.PersistentVector.fromArray([cljs.core.first.call(null, jayq.core.data.call(null, $cell, "\ufdd0'coords")), cljs.core.last.call(null, jayq.core.data.call(null, $cell, "\ufdd0'coords"))], true)
 };
 client.core.calc_buffer = function calc_buffer(start) {
   var ide = cljs.core.identity;
-  var iter__2609__auto__ = function iter__10584(s__10585) {
+  var iter__2609__auto__ = function iter__30348(s__30349) {
     return new cljs.core.LazySeq(null, false, function() {
-      var s__10585__$1 = s__10585;
+      var s__30349__$1 = s__30349;
       while(true) {
-        var temp__4092__auto__ = cljs.core.seq.call(null, s__10585__$1);
+        var temp__4092__auto__ = cljs.core.seq.call(null, s__30349__$1);
         if(temp__4092__auto__) {
           var xs__4579__auto__ = temp__4092__auto__;
           var pair = cljs.core.first.call(null, xs__4579__auto__);
-          return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([cljs.core.first.call(null, pair).call(null, cljs.core.first.call(null, start)), cljs.core.last.call(null, pair).call(null, cljs.core.last.call(null, start))], true), iter__10584.call(null, cljs.core.rest.call(null, s__10585__$1)))
+          return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray([cljs.core.first.call(null, pair).call(null, cljs.core.first.call(null, start)), cljs.core.last.call(null, pair).call(null, cljs.core.last.call(null, start))], true), iter__30348.call(null, cljs.core.rest.call(null, s__30349__$1)))
         }else {
           return null
         }
@@ -25418,12 +25443,12 @@ client.core.bug_map = function bug_map(start) {
   while(true) {
     var position = cljs.core.rand_nth.call(null, open);
     if(cljs.core.next.call(null, bugs)) {
-      var G__10586 = cljs.core.rest.call(null, bugs);
-      var G__10587 = cljs.core.remove.call(null, cljs.core.PersistentHashSet.fromArray([position]), open);
-      var G__10588 = cljs.core.conj.call(null, used, position);
-      bugs = G__10586;
-      open = G__10587;
-      used = G__10588;
+      var G__30350 = cljs.core.rest.call(null, bugs);
+      var G__30351 = cljs.core.remove.call(null, cljs.core.PersistentHashSet.fromArray([position]), open);
+      var G__30352 = cljs.core.conj.call(null, used, position);
+      bugs = G__30350;
+      open = G__30351;
+      used = G__30352;
       continue
     }else {
       return cljs.core.conj.call(null, used, position)
@@ -25433,13 +25458,13 @@ client.core.bug_map = function bug_map(start) {
 };
 client.core.populate_board = function populate_board(start) {
   client.core.put.call(null, start, client.core.man.call(null));
-  var G__10590 = cljs.core.seq.call(null, client.core.bug_map.call(null, start));
+  var G__30354 = cljs.core.seq.call(null, client.core.bug_map.call(null, start));
   while(true) {
-    if(G__10590) {
-      var b = cljs.core.first.call(null, G__10590);
+    if(G__30354) {
+      var b = cljs.core.first.call(null, G__30354);
       client.core.put.call(null, b, client.core.bug.call(null));
-      var G__10591 = cljs.core.next.call(null, G__10590);
-      G__10590 = G__10591;
+      var G__30355 = cljs.core.next.call(null, G__30354);
+      G__30354 = G__30355;
       continue
     }else {
       return null
@@ -25447,25 +25472,25 @@ client.core.populate_board = function populate_board(start) {
     break
   }
 };
-client.core.validate_move = function validate_move(p__10592, dir, dist) {
-  var vec__10597 = p__10592;
-  var x = cljs.core.nth.call(null, vec__10597, 0, null);
-  var y = cljs.core.nth.call(null, vec__10597, 1, null);
-  var pred__10598 = cljs.core._EQ_;
-  var expr__10599 = dir;
-  if(pred__10598.call(null, "\ufdd0'north", expr__10599)) {
+client.core.validate_move = function validate_move(p__30356, dir, dist) {
+  var vec__30361 = p__30356;
+  var x = cljs.core.nth.call(null, vec__30361, 0, null);
+  var y = cljs.core.nth.call(null, vec__30361, 1, null);
+  var pred__30362 = cljs.core._EQ_;
+  var expr__30363 = dir;
+  if(pred__30362.call(null, "\ufdd0'north", expr__30363)) {
     return!(y - dist < 0)
   }else {
-    if(pred__10598.call(null, "\ufdd0'south", expr__10599)) {
+    if(pred__30362.call(null, "\ufdd0'south", expr__30363)) {
       return client.core.game_board_height > y + dist
     }else {
-      if(pred__10598.call(null, "\ufdd0'west", expr__10599)) {
+      if(pred__30362.call(null, "\ufdd0'west", expr__30363)) {
         return!(x - dist < 0)
       }else {
-        if(pred__10598.call(null, "\ufdd0'east", expr__10599)) {
+        if(pred__30362.call(null, "\ufdd0'east", expr__30363)) {
           return client.core.game_board_width > x + dist
         }else {
-          throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(expr__10599)].join(""));
+          throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(expr__30363)].join(""));
         }
       }
     }
@@ -25477,26 +25502,26 @@ client.core.move = function move(from, to) {
   client.core.put.call(null, from, client.core.blank.call(null));
   return client.core.put.call(null, to, curr)
 };
-client.core.make_move = function make_move(p__10601, dir, dist) {
-  var vec__10606 = p__10601;
-  var x = cljs.core.nth.call(null, vec__10606, 0, null);
-  var y = cljs.core.nth.call(null, vec__10606, 1, null);
+client.core.make_move = function make_move(p__30365, dir, dist) {
+  var vec__30370 = p__30365;
+  var x = cljs.core.nth.call(null, vec__30370, 0, null);
+  var y = cljs.core.nth.call(null, vec__30370, 1, null);
   if(cljs.core.truth_(client.core.validate_move.call(null, cljs.core.PersistentVector.fromArray([x, y], true), dir, dist))) {
-    var pred__10607 = cljs.core._EQ_;
-    var expr__10608 = dir;
-    if(pred__10607.call(null, "\ufdd0'north", expr__10608)) {
+    var pred__30371 = cljs.core._EQ_;
+    var expr__30372 = dir;
+    if(pred__30371.call(null, "\ufdd0'north", expr__30372)) {
       return client.core.move.call(null, cljs.core.PersistentVector.fromArray([x, y], true), cljs.core.PersistentVector.fromArray([x, y - dist], true))
     }else {
-      if(pred__10607.call(null, "\ufdd0'south", expr__10608)) {
+      if(pred__30371.call(null, "\ufdd0'south", expr__30372)) {
         return client.core.move.call(null, cljs.core.PersistentVector.fromArray([x, y], true), cljs.core.PersistentVector.fromArray([x, y + dist], true))
       }else {
-        if(pred__10607.call(null, "\ufdd0'west", expr__10608)) {
+        if(pred__30371.call(null, "\ufdd0'west", expr__30372)) {
           return client.core.move.call(null, cljs.core.PersistentVector.fromArray([x, y], true), cljs.core.PersistentVector.fromArray([x - dist, y], true))
         }else {
-          if(pred__10607.call(null, "\ufdd0'east", expr__10608)) {
+          if(pred__30371.call(null, "\ufdd0'east", expr__30372)) {
             return client.core.move.call(null, cljs.core.PersistentVector.fromArray([x, y], true), cljs.core.PersistentVector.fromArray([x + dist, y], true))
           }else {
-            throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(expr__10608)].join(""));
+            throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(expr__30372)].join(""));
           }
         }
       }
@@ -25505,31 +25530,31 @@ client.core.make_move = function make_move(p__10601, dir, dist) {
     return null
   }
 };
-client.core.move_toward = function move_toward(p__10610, p__10611) {
-  var vec__10614 = p__10610;
-  var x1 = cljs.core.nth.call(null, vec__10614, 0, null);
-  var y1 = cljs.core.nth.call(null, vec__10614, 1, null);
-  var vec__10615 = p__10611;
-  var x2 = cljs.core.nth.call(null, vec__10615, 0, null);
-  var y2 = cljs.core.nth.call(null, vec__10615, 1, null);
+client.core.move_toward = function move_toward(p__30374, p__30375) {
+  var vec__30378 = p__30374;
+  var x1 = cljs.core.nth.call(null, vec__30378, 0, null);
+  var y1 = cljs.core.nth.call(null, vec__30378, 1, null);
+  var vec__30379 = p__30375;
+  var x2 = cljs.core.nth.call(null, vec__30379, 0, null);
+  var y2 = cljs.core.nth.call(null, vec__30379, 1, null);
   var new_x = x1 < x2 ? x1 + 1 : x1 > x2 ? x1 - 1 : "\ufdd0'equal" ? x1 : null;
   var new_y = y1 < y2 ? y1 + 1 : y1 > y2 ? y1 - 1 : "\ufdd0'equal" ? y1 : null;
   return client.core.move.call(null, cljs.core.PersistentVector.fromArray([x1, y1], true), cljs.core.PersistentVector.fromArray([new_x, new_y], true))
 };
 client.core.read_key_input = function read_key_input(e) {
   var k = e.which;
-  var pred__10619 = cljs.core._EQ_;
-  var expr__10620 = k;
-  if(pred__10619.call(null, 38, expr__10620)) {
+  var pred__30383 = cljs.core._EQ_;
+  var expr__30384 = k;
+  if(pred__30383.call(null, 38, expr__30384)) {
     return"\ufdd0'north"
   }else {
-    if(pred__10619.call(null, 40, expr__10620)) {
+    if(pred__30383.call(null, 40, expr__30384)) {
       return"\ufdd0'south"
     }else {
-      if(pred__10619.call(null, 37, expr__10620)) {
+      if(pred__30383.call(null, 37, expr__30384)) {
         return"\ufdd0'west"
       }else {
-        if(pred__10619.call(null, 39, expr__10620)) {
+        if(pred__30383.call(null, 39, expr__30384)) {
           return"\ufdd0'east"
         }else {
           return"\ufdd0'sit"
@@ -25550,7 +25575,8 @@ client.core.wire_up_keyboard_controls = function wire_up_keyboard_controls() {
   })
 };
 client.core.wire_up_mouse_controls = function wire_up_mouse_controls() {
-  return jayq.core.$.call(null, "#gameboard table").click(function(e) {
+  return jayq.core.$.call(null, "#gameboard table td").click(function(e) {
+    jayq.core.prevent.call(null, e);
     var target = jayq.core.closest.call(null, jayq.core.$.call(null, e.target), "td");
     var final$ = client.core.coords.call(null, target);
     var current = client.core.coords.call(null, client.core.find_man.call(null));
