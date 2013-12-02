@@ -45,10 +45,10 @@
 		<h2>developer</h2>
 		<h3 class="buttons">
 			<a href="mailto:brandon.m.henry@gmail.com" title="brandon.m.henry@gmail.com">
-				<span class="glyphicon glyphicon-envelope"></span>
+				<span class="fa fa-envelope"></span>
 			</a>
 			<a href="tel://1-207-754-4303" title="207.754.4303">
-				<span class="glyphicon glyphicon-earphone"></span>
+				<span class="fa fa-phone"></span>
 			</a>
 		</h3>
 	</div>
