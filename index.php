@@ -38,7 +38,6 @@
 		<h1>Brandon Henry</h1>
 		<h2>Software Developer</h2>
 		<h3><a href="mailto:brandon.m.henry@gmail.com">brandon.m.henry@gmail.com</a></h3>
-		<h3><a href="tel://1-207-754-4303">207.754.4303</a></h3>
 	</div>
 	<div id="header-xs" class="visible-xs col-xs-12">
 		<h1>bhenry</h1>
@@ -47,10 +46,7 @@
 			<a href="mailto:brandon.m.henry@gmail.com" title="brandon.m.henry@gmail.com">
 				<span class="fa fa-envelope"></span>
 			</a>
-			<a href="tel://1-207-754-4303" title="207.754.4303">
-				<span class="fa fa-phone"></span>
-			</a>
-                        <a href="https://github.com/bhenry" title="github.com/bhenry"
+			<a href="https://github.com/bhenry" title="github.com/bhenry"
                            target="_blank">
 				<span class="fa fa-github"></span>
 			</a>
