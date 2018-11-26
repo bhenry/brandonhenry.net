@@ -38,6 +38,9 @@
 		<h1>Brandon Henry</h1>
 		<h2>Software Developer</h2>
 		<h3><a href="mailto:brandon.m.henry@gmail.com">brandon.m.henry@gmail.com</a></h3>
+		<h3><a href="https://github.com/bhenry" title="github.com/bhenry" target="_blank">
+			<span class="fa fa-github"></span> github
+		</a></h3>
 	</div>
 	<div id="header-xs" class="visible-xs col-xs-12">
 		<h1>bhenry</h1>
